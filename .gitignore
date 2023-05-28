@@ -216,3 +216,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Mines
+.code-workspace
