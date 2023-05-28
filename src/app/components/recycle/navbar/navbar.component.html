@@ -1,0 +1,62 @@
+<div>
+    <div class="bg-white border border-gray-300 p-2 mt-1 absolute top-10 right-2 z-50" *ngIf="isDropdownOpen">
+        <a routerLink="/user" class="block py-2 cursor-pointer">My profile</a>
+        <hr>
+        <a class="block my-2  cursor-pointer" (click)="logOut()">Log out</a>
+    </div>
+    <div class="flex justify-between shadow-md shadow-gray-700 p-2 color-trans bg-slate-300 hover:bg-slate-400 h-12">
+        <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-github h-5" viewBox="0 0 16 16">
+                <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+
+            <a href="https://github.com/Trino11/" target="_blank" class="px-2 font-bold cursor-pointer">TForum</a>
+        </div>
+
+        <div class="flex items-center">
+            <a routerLink="/" target="_self" class="focus:no-underline"> <svg xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" class="bi bi-house h-6" viewBox="0 0 16 16">
+                    <path
+                        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="" *ngIf="isLoggedIn === loggedInStatus.loading">
+            <p class="px-4">loading...</p>
+        </div>
+        <div class="all-trans flex items-center cursor-pointer hover:shadow hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-blue-400 rounded-xl"
+            *ngIf="isLoggedIn === loggedInStatus.loggedIn"
+            (click)="isDropdownOpen? isDropdownOpen = false : isDropdownOpen = true">
+            <p class="px-2">{{userInfo?.alias}}</p>
+
+            <svg *ngIf="!userInfo?.ppic" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                class="bi bi-person-circle h-8" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+            </svg>
+            <img *ngIf="userInfo?.ppic" src="{{userInfo?.ppic}}">
+        </div>
+        <div class="all-trans flex items-center hover:shadow hover:bg-blue-400 rounded-xl px-2 my-1 py-3"
+            *ngIf="isLoggedIn === loggedInStatus.notLoggedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-arrow-in-right h-6"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                <path fill-rule="evenodd"
+                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+            </svg>
+            <a class="pl-3 font-semibold" routerLink="/login">Login</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 
+<a routerLink="/login">Login</a>
+<div *ngIf="isLoggedIn === loggedInStatus.loading">Cargando...</div>
+<div *ngIf="isLoggedIn === loggedInStatus.loggedIn">Has iniciado sesion.</div>
+<div *ngIf="isLoggedIn === loggedInStatus.notLoggedIn">No has iniciado sesion.</div> -->

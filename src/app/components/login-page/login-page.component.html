@@ -1,0 +1,39 @@
+<div class="bg-slate-100 h-screen">
+    <app-navbar></app-navbar>
+    <div class="flex justify-center items-center h-4/5">
+        <form (submit)="tryLogin(username, password)"
+            class="all-trans bg-slate-600 rounded-xl px-3 py-8 shadow-xl text-gray-50 w-full sm:w-3/5 lg:w-2/5 xl:w-4/12"
+            [class.shadow-orange-300]="isButtonRegister" [class.shadow-blue-300]="isButtonLogin" [class.shadow-red-300]="isErrorLogin" [class.shadow-gray-800]="!isButtonRegister && !isButtonLogin && !isErrorLogin">
+            <div class="flex justify-center py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person h-6"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                </svg>
+                <input
+                    class="all-trans ml-2 h-6 rounded-t-sm px-2 pb-2 bg-transparent border-b-gray-800 focus:border-b-black border-b-2 focus:border-b-4"
+                    type="text" id="username" #username>
+            </div>
+
+            <div class="flex justify-center py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-asterisk h-6"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
+                </svg>
+                <input
+                    class="all-trans ml-2 h-6 rounded-t-sm px-2 pb-2 bg-transparent border-b-gray-800 focus:border-b-black border-b-2 focus:border-b-4"
+                    type="password" id="password" #password>
+            </div>
+            <div class="flex justify-between px-10 py-5">
+                <button (mouseover)="isButtonLogin = true" (mouseleave)="isButtonLogin = false"
+                    class="all-trans hover:bg-blue-600 bg-blue-300 rounded-full px-2 py-1 font-medium text-black"
+                    type="submit">Login</button>
+                <a (mouseover)="isButtonRegister = true" (mouseleave)="isButtonRegister = false"
+                    class="all-trans hover:bg-orange-600 bg-orange-300 rounded-full px-2 py-1 font-medium text-black"
+                    routerLink="/register">Register</a>
+            </div>
+        </form>
+    </div>
+    <app-footer></app-footer>
+</div>

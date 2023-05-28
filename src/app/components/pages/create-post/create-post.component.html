@@ -1,0 +1,17 @@
+<div class="bg-slate-200 pb-5">
+    <app-navbar></app-navbar>
+    <div class="flex flex-col items-center">
+        <p class="pt-2">Creating a new post...</p>
+
+        <form class="bg-slate-600 w-full py-2" (submit)="tryCreatePost(title, quilleditor)">
+            <input placeholder="Post title..." class="w-full font-bold text-xl px-2 py-1" #title>
+            <quill-editor class="ql-bubble w-full my-2 px-2 bg-white" #quilleditor></quill-editor>
+
+            <div class="flex justify-center pb-2">
+                <button type="submit" class="w-16 bg-green-400 rounded-full m-auto">Crear</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<app-footer></app-footer>
