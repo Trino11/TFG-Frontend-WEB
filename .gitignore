@@ -218,4 +218,4 @@ testem.log
 Thumbs.db
 
 # Mines
-.code-workspace
+*.code-workspace
