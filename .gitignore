@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node,angular
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,angular
+# Created by https://www.toptal.com/developers/gitignore/api/node,angular,visualstudiocode,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,angular,visualstudiocode,dotenv
 
 ### Angular ###
 ## Angular ##
@@ -32,6 +32,9 @@ e2e/*.map
 
 # System Files
 .DS_Store/
+
+### dotenv ###
+.env
 
 ### Node ###
 # Logs
@@ -108,7 +111,6 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
 .env.development.local
 .env.test.local
 .env.production.local
@@ -172,50 +174,23 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-# End of https://www.toptal.com/developers/gitignore/api/node,angular
-
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
+### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+!.vscode/*.code-snippets
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+# Local History for Visual Studio Code
+.history/
 
-# System files
-.DS_Store
-Thumbs.db
+# Built Visual Studio Code Extensions
+*.vsix
 
-# Mines
-*.code-workspace
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/node,angular,visualstudiocode,dotenv
