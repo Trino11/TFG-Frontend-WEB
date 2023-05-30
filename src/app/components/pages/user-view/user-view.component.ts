@@ -35,7 +35,9 @@ export class UserViewComponent {
                 this.selfUser = res.result
                 this.getPostsFromUser()
               },
-              err => { }
+              err => {
+                this.getPostsFromUser()
+              }
             )
           },
           err => { }
