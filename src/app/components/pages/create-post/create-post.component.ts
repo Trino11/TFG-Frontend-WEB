@@ -38,6 +38,7 @@ export class CreatePostComponent {
   public tryCreatePost(title: HTMLInputElement, quill: QuillEditorComponent) {
     this.post.title = title.value
     this.post.body = quill.quillEditor.getContents()
+    this.post.plain_body = quill.quillEditor.getText()
     if (this.path)
       this.post.folder = this.path.replace(/_/g, "/")
 
