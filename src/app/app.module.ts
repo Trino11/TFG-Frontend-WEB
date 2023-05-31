@@ -16,6 +16,7 @@ import { FooterComponent } from './components/recycle/footer/footer.component';
 import { PostViewComponent } from './components/pages/post-view/post-view.component';
 import { UserViewComponent } from './components/pages/user-view/user-view.component';
 import { CreatePostComponent } from './components/pages/create-post/create-post.component';
+import { ChatComponent } from './components/recycle/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CreatePostComponent } from './components/pages/create-post/create-post.
     FooterComponent,
     PostViewComponent,
     UserViewComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
