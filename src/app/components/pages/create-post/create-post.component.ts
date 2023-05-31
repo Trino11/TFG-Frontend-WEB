@@ -24,6 +24,7 @@ export class CreatePostComponent {
     pid: "",
     title: "",
     body: "",
+    plain_body: "",
     folder: "",
     edited: false,
     public_date: new Date()

@@ -84,7 +84,8 @@ export class PostViewComponent {
     if (title.length == 0 || quilleditor.quillEditor.getText().length == 0) { }
     else {
       if (this.post?.pid)
-        this.indexServiceService.postUpdate({ title: title, body: quilleditor.quillEditor.getContents() }, this.post?.pid).subscribe(
+        this.indexServiceService.postUpdate({ title: title, body: quilleditor.quillEditor.getContents(), 
+                                              plain_body: quilleditor.quillEditor.getText() }, this.post?.pid).subscribe(
           res => { this.initPost(); this.editing = false },
           err => { }
         )

@@ -55,7 +55,7 @@
                 <a routerLink="/post/{{post.title}}" class="flex">
                     <p class="font-semibold py-1 w-4/12">{{post.title}}</p>
                     <quill-view #quillview class="font-normal py-1 w-8/12 mb-3"
-                        (onEditorCreated)="checkType(post?.body) === 'string' ? quillview.quillEditor.setText(post.body?.length > 200 ? post.body?.substring(0, 200) + '...' : post.body) : quillview.quillEditor.setContents(post.body?.ops.length > 10 ? trimOpsBody(post?.body) : post.body)"></quill-view>
+                        (onEditorCreated)="quillview.quillEditor.setText(post.plain_body?.length > 200 ? post.plain_body?.substring(0, 200) + '...' : post.plain_body)"></quill-view>
                 </a>
             </div>
         </div>

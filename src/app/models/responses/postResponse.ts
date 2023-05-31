@@ -6,6 +6,7 @@ export interface PostDocument {
     pid?:string,
     title:string,
     body:string|any,
+    plain_body:string|any,
     tags?:string[],
     comments?:CommentModel[],
     public_date?:Date,
