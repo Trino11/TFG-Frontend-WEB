@@ -1,2 +1,78 @@
-<p>chat works!</p>
-<button >Connect</button>
+<div class="bg-green-200 pt-2 mt-2 flex flex-col h-full">
+    <div class="w-full h-7 flex justify-center">
+        <p>Chat!</p>
+    </div>
+    <div class="w-full flex-grow">
+        <div class="flex flex-col h-full" *ngIf="chatActual && !creatingChat">
+            <div class="flex h-8 px-2 mb-2 bg-orange-300 items-center h-">
+                <img *ngIf="chatActual.persons.ppic" src="{{chatActual.persons.ppic}}" class="rounded-full" />
+                <svg *ngIf="!chatActual.persons.ppic" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="bi bi-person-circle h-6" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+                <div class="pl-2 flex items-end">
+                    <p class="text-2xl">{{chatActual.persons.alias}}</p>
+                    <p class="text-gray-800">#{{chatActual.persons.tag}}</p>
+                </div>
+            </div>
+            <div class="flex-grow">
+                <div *ngFor="let msg of chatActual.msgs" class="px-1 ">
+                    <!-- <p class="border border-gray-500 px-1 rounded-md">{{msg.text}}</p> -->
+                    <div class="flex my-1 w-full" [class.justify-start]="msg.author != ownInfo?._id && msg.author != ownInfo?.uid"
+                        [class.justify-end]="msg.author == ownInfo?._id || msg.author == ownInfo?.uid">
+                        <p class="border border-gray-500 px-1 rounded-md ">{{msg.msg}}</p>
+                    </div>
+                </div>
+            </div>
+            <form class="w-full flex pb-2" (submit)="sendMessage(message.value); message.value = ''">
+                <input #message placeholder="Type a message..." class="flex-grow pl-1 pr-3 py-1.5 ml-2 rounded-xl" />
+                <button class="mx-2 px-3 bg-green-500 rounded-xl">Send</button>
+            </form>
+        </div>
+        <div class="flex flex-col h-full" *ngIf="creatingChat">
+            <div class="">
+                <div class="flex" *ngFor="let user of allUsers">
+                    <div class="flex" (click)="createChat(user)">
+                        <p>{{user.alias}}</p>
+                        <p>#{{user.tag}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-blue-500 w-full h-20 flex items-center">
+        <div *ngFor="let chat of chats"
+            class="px-1 mx-1 flex flex-col items-center justify-center mt-1 pt-1 mb-1 bg-blue-200 rounded-lg cursor-pointer"
+            (click)="showChat(chat); creatingChat = false;">
+            <img *ngIf="chat.persons.ppic != undefined" src="{{chat.persons.ppic}}" class="rounded-full"/>
+            <svg *ngIf="chat.persons.ppic == undefined" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                class="bi bi-person-circle h-8" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+            </svg>
+            <div class="">
+                <p>{{chat.persons.alias}}</p>
+            </div>
+        </div>
+        <div class="pl-2" (click)="creatingChat = !creatingChat; getAllUsers()">
+            <div>
+                <svg *ngIf="!creatingChat" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="bi bi-plus-circle h-8" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+                <svg *ngIf="creatingChat" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="bi bi-x-circle h-8" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -6,5 +6,6 @@ export interface userDataFull {
     lastName?:string;
     birthday?:Date|null;
     ppic?:string;
-    admin?:boolean
+    admin?:boolean;
+    _id?:string
 }

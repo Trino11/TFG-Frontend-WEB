@@ -6,6 +6,7 @@ import { userDataFull } from '../models/requests/userDataFull';
 import { PostsFolder } from '../models/responses/postsFolderResponse';
 import { PostDocument } from '../models/responses/postResponse';
 import { CommentModel } from '../models/commentModel';
+import { ChatType } from '../models/chatModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class IndexServiceService {
   constructor(private http: HttpClient) {
     if(this.api_url.endsWith('/'))
     this.api_url = this.api_url.substring(0, this.api_url.length-1)
+  }
+
+  getAllUsersInfo():Observable<{result:userDataFull[]}>{
+    return this.http.get<{result:userDataFull[]}>(`${this.api_url}/user/all`)
   }
 
   getUserInfo():Observable<{result:userDataFull}>{
@@ -33,6 +38,10 @@ export class IndexServiceService {
 
   getUserInfoByAlias(alias:string):Observable<{result:userDataFull}>{
     return this.http.get<{result:userDataFull}>(`${this.api_url}/user/single/alias/${alias}`)
+  }
+
+  getOwnChats():Observable<{result:ChatType[]}>{
+    return this.http.get<{result:ChatType[]}>(`${this.api_url}/msg/ownAll`)
   }
 
   getPathPosts(path:string):Observable<{result:{current:PostsFolder, folders:[PostsFolder], posts:[PostDocument]}}>{
