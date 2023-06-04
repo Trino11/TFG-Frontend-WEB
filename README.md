@@ -2,7 +2,9 @@
 
 ## Important
 
-This is not the main repository of the project, just a mirror. The updated repo can be found on gitlab https://git.trinohost.com/trino/tfg-frontend-web
+This is not the main repository of the project, just a mirror. The updated repo can be found on gitlab
+
+https://git.trinohost.com/trino/tfg-frontend-web
 
 ## General projects features (APIs and consumers)
 
